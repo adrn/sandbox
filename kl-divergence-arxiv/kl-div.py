@@ -62,7 +62,6 @@ def main():
     for id, entry in entries.items():
         freqdists[id] = nltk.FreqDist(parse_abstract(entry['abstract']))
         ii += 1
-        if ii > 500: break
     
     items = freqdists.items()
     kl_matrix = np.zeros((len(freqdists.keys()), len(freqdists.keys())))
