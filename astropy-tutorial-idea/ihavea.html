@@ -36,18 +36,29 @@
 	        $("#fileType").css("display", "table-cell");
 	        $("#fileTypeOptions").css("display", "table-cell");
 	        
-	        $("#fileTypeOptions h2").each(function() {
-	            $(this).on('click', function() {
+	        $("#fileTypeOptions h2").each(function() {	            
+	            $(this).click(function() {
 	                $("#wantTo").css("display", "table-cell");
 	                $("#wantToOptions").css("display", "table-cell");
 	                
 	                $("#wantToOptions").empty();
 	                var theseOptions = options[$(this).html()];
 	                for (var i=0; i<theseOptions.length; i++) {
-	                    $("#wantToOptions").append('<h2>' + theseOptions[i] + '</h2>');
+	                    $("#wantToOptions").append('<h2><a>' + theseOptions[i] + '</a></h2>');
 	                }
 	            });
+	            
+	            $(this).mouseover(function() {
+	                $(this).css("text-decoration", "underline");
+	                $(this).css("cursor", "pointer");
+	            });
+	            
+	            $(this).mouseout(function() {
+	                $(this).css("text-decoration", "none");
+	            });
+	            
 	        });
+	        
         });
 	    
 	</script>
