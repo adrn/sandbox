@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>astropy</title>
+	
+	<!-- CSS -->
+	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' 
+	    rel='stylesheet' type='text/css'>
+	<link href='css/style.css' rel='stylesheet' type='text/css'>
+	
+	<!-- JS -->
+	<script src="http://code.jquery.com/jquery-latest.min.js" 
+	    type="text/javascript"></script>
+	    
+	<script type='text/javascript'>
+	    var options = {};
+	    
+	    options['table'] = ['write to a file',
+	                        'rename/move columns',
+	                        'add/remove columns'];
+    
+        options['image'] = ['display it',
+	                        '??'];
+        
+        options['spectrum'] = ['plot it',
+	                           '??'];
+	    
+	    options['FITS file'] = ['read it',
+	                            'modify and rewrite'];
+        
+        options['ASCII file'] = ['read it',
+	                            'modify and rewrite'];
+	    
+	    $(document).ready(function() {
+	        $("#fileType").css("display", "table-cell");
+	        $("#fileTypeOptions").css("display", "table-cell");
+	        
+	        $("#fileTypeOptions h2").each(function() {
+	            $(this).on('click', function() {
+	                $("#wantTo").css("display", "table-cell");
+	                $("#wantToOptions").css("display", "table-cell");
+	                
+	                $("#wantToOptions").empty();
+	                var theseOptions = options[$(this).html()];
+	                for (var i=0; i<theseOptions.length; i++) {
+	                    $("#wantToOptions").append('<h2>' + theseOptions[i] + '</h2>');
+	                }
+	            });
+	        });
+        });
+	    
+	</script>
+	
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="cell title" id="fileType">
+            <h1>I have a</h1>
+        </div>
+        <div class="cell options" id="fileTypeOptions">
+            <h2>table</h2>
+            <h2>image</h2>
+            <h2>spectrum</h2>
+            <h2>FITS file</h2>
+            <h2>ASCII file</h2>
+        </div>
+        <div class="cell title" id="wantTo">
+            <h1>I want to</h1>
+        </div>
+        <div class="cell options" id="wantToOptions">
+            <h2 class='placeholder'>&lt;click an option&gt;</h2>
+        </div>
+    </div>    
+</body>
+</html>
